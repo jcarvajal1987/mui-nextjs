@@ -21,7 +21,6 @@ interface MyAppProps extends AppProps {
   emotionCache?: EmotionCache
   window?: () => Window
   children: React.ReactElement
-  const Layout = Component.Layout || EmptyLayout
 }
 
 function HideOnScroll(props: MyAppProps) {
@@ -41,8 +40,10 @@ function HideOnScroll(props: MyAppProps) {
 }
 
 export default function MyApp(props: MyAppProps) {
-  const { Layout,Component, emotionCache = clientSideEmotionCache, pageProps } = props
-  
+  const { Component, emotionCache = clientSideEmotionCache, pageProps } = props
+
+  const Layout = Component.Layout || EmptyLayout
+
   return (
     <CacheProvider value={emotionCache}>
       <ThemeProvider theme={theme}>

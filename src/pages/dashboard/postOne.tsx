@@ -7,7 +7,7 @@ import PostLayout from "@layout/postLayout"
 const postOne = () => {
   return (
     <div>
-      postOne<Link href="/dashboard">Ir a index</Link>
+      postOne, <Link href="/dashboard">Ir a index</Link>
     </div>
   )
 }
