@@ -2,7 +2,7 @@ import React from "react"
 
 import Link from "next/link"
 
-import PostLayout from "@layout/PostLayout"
+import PostLayout from "../../layout/postLayout"
 
 const Dashboard = () => {
   return (
