@@ -15,18 +15,8 @@ const PostLayout = ({ children }) => {
       >
         <BasicList />
       </Box>
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          p: 1,
-          m: 1,
 
-          borderRadius: 1,
-        }}
-      >
-        {children}
-      </Box>
+      {children}
     </Box>
   )
 }

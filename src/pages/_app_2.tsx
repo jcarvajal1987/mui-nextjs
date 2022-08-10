@@ -9,6 +9,9 @@ import { ThemeProvider } from "@mui/material/styles"
 import Toolbar from "@mui/material/Toolbar"
 import useScrollTrigger from "@mui/material/useScrollTrigger"
 import { AppProps } from "next/app"
+import { useRouter } from "next/router"
+
+import PostLayout from "@layout/postLayout"
 
 import createEmotionCache from "../createEmotionCache"
 import Navbar from "../layout/Navbar"
@@ -42,16 +45,12 @@ function HideOnScroll(props: MyAppProps) {
 export default function MyApp(props: MyAppProps) {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props
 
-  const [value, setValue] = React.useState(Component.name)
+  const router = useRouter()
+
   const LayPages = ["postOne", "Dashboard"]
 
-  const handleLayout = (e) => {
-    setValue(e)
-  }
-
-  React.useEffect(() => {
-    handleLayout(Component.name)
-  }, [Component.name])
+  const Layout =
+    LayPages.indexOf(Component.name) > -1 ? PostLayout : EmptyLayout
 
   return (
     <CacheProvider value={emotionCache}>
@@ -64,9 +63,23 @@ export default function MyApp(props: MyAppProps) {
         </HideOnScroll>
         <Box height="100vh" display="flex" flexDirection="column">
           <Toolbar sx={{ display: "flex" }} />
+          {LayPages.indexOf(Component.name) > -1 ? (
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+              }}
+            >
+              botonera
+            </Box>
+          ) : (
+            <div></div>
+          )}
           <Component {...pageProps} />
         </Box>
       </ThemeProvider>
     </CacheProvider>
   )
 }
+
+const EmptyLayout = ({ children }) => <>{children}</>

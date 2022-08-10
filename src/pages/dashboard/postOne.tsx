@@ -6,12 +6,10 @@ import PostLayout from "@layout/postLayout"
 
 const postOne = () => {
   return (
-    <div>
+    <PostLayout>
       postOne, <Link href="/dashboard">Ir a index</Link>
-    </div>
+    </PostLayout>
   )
 }
 
 export default postOne
-
-postOne.Layout = PostLayout

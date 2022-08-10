@@ -1,17 +1,15 @@
 import * as React from "react"
 
 import MenuIcon from "@mui/icons-material/Menu"
+import { Button } from "@mui/material"
 import Box from "@mui/material/Box"
-import Button from "@mui/material/Button"
 import Divider from "@mui/material/Divider"
 import Drawer from "@mui/material/Drawer"
 import IconButton from "@mui/material/IconButton"
 import List from "@mui/material/List"
-import ListItem from "@mui/material/ListItem"
-import ListItemButton from "@mui/material/ListItemButton"
-import ListItemText from "@mui/material/ListItemText"
 import Toolbar from "@mui/material/Toolbar"
 import Typography from "@mui/material/Typography"
+import { default as NextLink } from "next/link"
 
 interface Props {
   /**
@@ -20,9 +18,11 @@ interface Props {
    */
   window?: () => Window
 }
-
 const drawerWidth = 240
-const navItems = ["Home", "About", "Contact"]
+const navItems = [
+  { name: "Home", url: "/" },
+  { name: "Dashboard", url: "/dashboard" },
+]
 
 export default function DrawerAppBar(props: Props) {
   const { window } = props
@@ -39,13 +39,15 @@ export default function DrawerAppBar(props: Props) {
       </Typography>
       <Divider />
       <List>
-        {navItems.map((item) => (
-          <ListItem key={item} disablePadding>
-            <ListItemButton sx={{ textAlign: "center" }}>
-              <ListItemText primary={item} />
-            </ListItemButton>
+        {/*{navItems.map((item, index) => (
+          <ListItem key={index} disablePadding>
+            <Link href={item.url}>
+              <ListItemButton sx={{ textAlign: "center" }}>
+                <ListItemText primary={item.name} />
+              </ListItemButton>
+            </Link>
           </ListItem>
-        ))}
+        ))}*/}
       </List>
     </Box>
   )
@@ -73,10 +75,12 @@ export default function DrawerAppBar(props: Props) {
           MUI
         </Typography>
         <Box sx={{ display: { xs: "none", sm: "block" } }}>
-          {navItems.map((item) => (
-            <Button key={item} sx={{ color: "#fff" }}>
-              {item}
-            </Button>
+          {navItems.map((item, index) => (
+            <NextLink href={item.url} passHref>
+              <Button variant="contained" color="secondary">
+                {item.name}
+              </Button>
+            </NextLink>
           ))}
         </Box>
       </Toolbar>

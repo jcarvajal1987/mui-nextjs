@@ -2,16 +2,14 @@ import React from "react"
 
 import Link from "next/link"
 
-import PostLayout from "../../layout/postLayout"
+import PostLayout from "@layout/postLayout"
 
 const Dashboard = () => {
   return (
-    <div>
+    <PostLayout>
       index dasboard, <Link href="/dashboard/postOne">Ir a postOne</Link>
-    </div>
+    </PostLayout>
   )
 }
 
 export default Dashboard
-
-Dashboard.Layout = PostLayout
