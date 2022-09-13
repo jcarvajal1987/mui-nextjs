@@ -76,7 +76,7 @@ export default function DrawerAppBar(props: Props) {
         </Typography>
         <Box sx={{ display: { xs: "none", sm: "block" } }}>
           {navItems.map((item, index) => (
-            <NextLink href={item.url} passHref>
+            <NextLink key={index} href={item.url} passHref>
               <Button variant="contained" color="secondary">
                 {item.name}
               </Button>
